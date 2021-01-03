@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/select">
+    <select name="type">
+        <option>title</option>
+          <option>type</option>
+          <option>add</option>
+          <option>price</option>
+        </select>
+    <input type="text" name="args">
+    <input type="submit" value="查找">
+</form>
+<table>
+    <tr>
+        <td width="10%">房屋标题</td>
+        <td width="10%">房屋类型</td>
+        <td width="10%">房屋位置</td>
+         <td width="10%">房屋报价</td>
+         <td width="30%">房屋信息链接</td>
+        <td width="10%">联系人</td>
+        <td width="10%">操作</td>
+    </tr>
+
+         {% for key,value in enumerate(my_list) %}
+ <tr>
+        <td>{{value["title"]}}</td>
+         <td>{{value["type"]}}</td>
+         <td>{{value["add"]}}</td>
+         <td>{{value["money"]}}元/月</td>
+     <td><a href="{{value['detal']}}">{{value["detal"]}}</a></td>
+         <td>{{value["linkman"]}}</td>
+     <td> <a href="/delete?id={{value['_id']}}">删除/</a><a href="/modify?id={{value['_id']}}">修改</a></td>
+        </tr>
+       {% end %}
+       <tr>
+           <td><a href="acutpage?bindex={{ bindex }}" > 上一页</a></td>
+
+           <td><a href="ncutpage?cindex={{ cindex }}"> 下一页</a></td>
+       </tr>
+
+</table>
+
+</body>
+</html>
